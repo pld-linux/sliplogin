@@ -64,11 +64,11 @@ install slip.{tty,hosts,route,passwd} $RPM_BUILD_ROOT/etc/slip
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc README* TODO TROUBLE_SHOOTING
 %dir /etc/slip
 %config %verify(not md5 mtime size) /etc/slip/*
-%attr(755, root, root) %{_sbindir}/sliplogin
+%attr(755,root,root) %{_sbindir}/sliplogin
 %{_mandir}/man8/*
 
 %changelog
