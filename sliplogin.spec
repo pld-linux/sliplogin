@@ -6,15 +6,16 @@ Summary(tr):	SLIP için sisteme giriþ programý
 Name:		sliplogin
 Version:	2.1.1
 Release:	4
-Copyright:      BSD
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
+Copyright:	BSD
 Source:		ftp://sunsite.unc.edu/pub/Linux/system/network/serial/%{name}-%{version}.tar.gz
-Patch0:		sliplogin-2.1.0-misc.patch
-Patch1:		sliplogin-2.1.1-modes.patch
-Patch2:		sliplogin-2.1.0-path.patch
-Patch4:		sliplogin-2.1.0-glibc.patch
-Patch5:		sliplogin-2.1.1-includes.patch
+Patch0:		sliplogin-misc.patch
+Patch1:		sliplogin-modes.patch
+Patch2:		sliplogin-path.patch
+Patch4:		sliplogin-glibc.patch
+Patch5:		sliplogin-includes.patch
+Patch6:		sliplogin-netdev.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -30,8 +31,8 @@ Attache une interface SLIP à l'entrée standard. Ceci est souvent utilisé
 pour permettre des connexions SLIP en dialin.
 
 %description -l pl
-Paket zawiera program pod³±czaj±cy interfejs SLIP do standardowego wej¶cia.
-Mo¿e byæ on wykorzystywany do udostêpniania po³±czenia opartego o SLIP na
+Paket zawiera program pod³±czaj±cy interfejsc SLIP do standardowego wej¶cia.
+Mo¿e byæ on wykorztystywany do udostêpniania po³±czenia opartego o SLIP na
 liniach modemowych.
 
 %description -l tr
@@ -45,6 +46,7 @@ izin verir.
 %patch2 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 make clean
@@ -69,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README*.gz TODO.gz TROUBLE_SHOOTING.gz
+%doc {README*,TODO,TROUBLE_SHOOTING}.gz
 %dir /etc/slip
 %config %verify(not md5 mtime size) /etc/slip/*
 %attr(755,root,root) %{_sbindir}/sliplogin
