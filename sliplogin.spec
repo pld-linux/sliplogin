@@ -57,7 +57,7 @@ install -d $RPM_BUILD_ROOT/{etc/slip,usr/{sbin,man/man8}}
 make install \
 	SLIP=$RPM_BUILD_ROOT/etc/slip \
 	SBIN=$RPM_BUILD_ROOT/usr/sbin \
-	MAN=$RPM_BUILD_ROOT/usr/man
+	MAN=$RPM_BUILD_ROOT%{_mandir}
 install slip.{tty,hosts,route,passwd} $RPM_BUILD_ROOT/etc/slip
 
 %clean
@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir /etc/slip
 %config %verify(not md5 mtime size) /etc/slip/*
 %attr(755, root, root) /usr/sbin/sliplogin
-%attr(644, root,  man) /usr/man/man8/*
+%attr(644, root,  man) %{_mandir}/man8/*
 
 %changelog
 * Thu Aug 18 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
