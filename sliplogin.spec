@@ -9,6 +9,7 @@ Release:	4
 Group:		Applications/System
 License:	BSD
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/serial/%{name}-%{version}.tar.gz
+# Source0-md5:	82996108ddb21c2fd9b7db23369af40e
 Patch0:		%{name}-misc.patch
 Patch1:		%{name}-modes.patch
 Patch2:		%{name}-path.patch
