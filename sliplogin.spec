@@ -7,8 +7,6 @@ Name:		sliplogin
 Version:	2.1.1
 Release:	4
 Group:		Applications/System
-Group(de):	Applikationen/System
-Group(pl):	Aplikacje/System
 License:	BSD
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/serial/%{name}-%{version}.tar.gz
 Patch0:		%{name}-misc.patch
