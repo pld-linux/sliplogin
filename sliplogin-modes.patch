@@ -1,0 +1,31 @@
+--- sliplogin-2.1.1/Makefile.modes	Thu Oct 23 17:26:19 1997
++++ sliplogin-2.1.1/Makefile	Thu Oct 23 17:26:19 1997
+@@ -21,6 +21,8 @@
+ #
+ # -DLINE_ACCESS		special library to restrict the access to special 
+ #			lines (Phone - numbers) or a limited time.
++# -DSLIP_MODES		Needed to provide CSLIP and other connection types
++#			besides plain SLIP.
+ 
+ # path for configuration files and to install binaries / manpages
+ SLIP	= /etc/slip
+@@ -32,7 +34,7 @@
+ CC	= gcc
+ LINK	= $(CC)
+ CFLAGS	= $(RPM_OPT_FLAGS) -pipe -fomit-frame-pointer #-Wall
+-EFLAGS	= -DESLIPLOGIN -DESLIP_AUTO
++EFLAGS	= -DESLIPLOGIN -DESLIP_AUTO -DSLIP_MODES
+ DEFINES	= -DSLIPPATH=\"$(SLIP)\" $(EFLAGS)
+ LDFLAGS = -s
+ 
+--- sliplogin-2.1.1/sliplogin.c.modes	Mon Aug 12 14:07:17 1996
++++ sliplogin-2.1.1/sliplogin.c	Thu Oct 23 17:28:03 1997
+@@ -467,6 +467,8 @@
+ 	 syslog(LOG_ERR, "ioctl (SIOCSIFENCAP): %m");
+      exit(1);
+     }
++#else
++#error Either SLIOCSFLAGS or SIOCSIFENCAP must be defined.
+ #endif
+ 
+     /* reset uid to users' to allow the user to give a signal.

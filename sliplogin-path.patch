@@ -1,0 +1,111 @@
+--- sliplogin-2.1.0/sliplogin.8.path	Tue Apr 30 18:40:02 1996
++++ sliplogin-2.1.0/sliplogin.8	Tue Jan 28 15:32:25 1997
+@@ -48,7 +48,7 @@
+ .Pq Tn SLIP
+ link to a remote host.  To do this, the program
+ searches the file
+-.Pa /etc/slip.hosts
++.Pa /etc/slip/slip.hosts
+ for an entry matching
+ .Ar loginname
+ (which defaults to the current login name if omitted).
+@@ -80,9 +80,9 @@
+ options which will be passed to slip.login.
+ .Pp
+ The usual initialization script is
+-.Pa /etc/slip.login
++.Pa /etc/slip/slip.login
+ but, if particular hosts need special initialization, the file
+-.Pa /etc/slip.login. Ns Ar loginname
++.Pa /etc/slip/slip.login. Ns Ar loginname
+ will be executed instead if it exists.
+ If you use the default user '*' sliplogin looks for slip.login.*,
+ but '*' is not used as a wildcard. If no slip.login.* exists,
+@@ -98,7 +98,7 @@
+ The process id of sliplogin.
+ .It Em args
+ The arguments from the
+-.Pa /etc/slip.hosts
++.Pa /etc/slip/slip.hosts
+ entry:
+ .Ar loginname, local address, remote address, netmask, slip-mode 
+ .Ar and the options. 
+@@ -109,17 +109,17 @@
+ automatically detached when the other end hangs up, the
+ .Nm sliplogin
+ process dies or the client didn't send a packet while the specified
+-timeout in /etc/slip.hosts.  If the kernel slip
++timeout in /etc/slip/slip.hosts.  If the kernel slip
+ module has been configured for it, all routes through that interface will
+ also disappear at the same time.  If there is other processing a site
+ would like done on hangup, the file
+-.Pa /etc/slip.logout
++.Pa /etc/slip/slip.logout
+ or
+-.Pa /etc/slip.logout. Ns Ar loginname
++.Pa /etc/slip/slip.logout. Ns Ar loginname
+ is executed if it exists.  It is given the same arguments as the login script.
+ For default user '*' sliplogin looks for slip.logout.* and if it doesn't
+ exist, it uses slip.logout.
+-.Ss Format of /etc/slip.hosts
++.Ss Format of /etc/slip/slip.hosts
+ Comments (lines starting with a `#') and blank lines are ignored.
+ Other lines must start with a
+ .Ar loginname
+@@ -158,12 +158,12 @@
+ terminates.
+ .Em Opt-args
+ are optional arguments used to configure the line.
+-.Ss Format of /etc/slip.route
++.Ss Format of /etc/slip/slip.route
+ To perform an easy way to route additional hosts and networks you may
+ create a file
+-.Em /etc/slip.route
++.Em /etc/slip/slip.route
+ which contents are evaluated by
+-.Em /etc/slip.log{in|out}
++.Em /etc/slip/slip.log{in|out}
+ to add or remove the given routes. The format is as follows
+ .Bd -literal -offset indent
+ gateway network	[netmask]
+@@ -172,7 +172,7 @@
+ Netmask defaults to
+ .Em 0xffffffff
+ if not given.
+-.Ss The Format of /etc/slip.tty
++.Ss The Format of /etc/slip/slip.tty
+ is simple. A line that starts with '#' is treated as a comment otherwise
+ .Nm sliplogin
+ expects in column 1 the name of the slipdevice and in column 2 the 
+@@ -183,9 +183,9 @@
+ .Em slip ,
+ sliplogin will ask for the user and an additional password.
+ If the given user and password matches an entry in 
+-.Em /etc/slip.passwd
++.Em /etc/slip/slip.passwd
+ the line is configured for that user. If a user-name starts with
+- '+' in /etc/slip.passwd sliplogin will try to read NIS-map
++ '+' in /etc/slip/slip.passwd sliplogin will try to read NIS-map
+ slip.passwd instead of slip.passwd.
+ .Pp
+ One advantage of this method is, that you don't need a /etc/passwd
+@@ -284,16 +284,16 @@
+ .Fn ioctl
+ to set the line parameters failed.
+ .Pp
+-.It Sy /etc/slip.hosts: Em reason
++.It Sy /etc/slip/slip.hosts: Em reason
+ The
+-.Pa /etc/slip.hosts
++.Pa /etc/slip/slip.hosts
+ file could not be opened.
+ .Pp
+ .It Sy access denied for Em user
+ No entry for
+ .Em user
+ was found in
+-.Pa /etc/slip.hosts .
++.Pa /etc/slip/slip.hosts .
+ .El
+ .Pp
+ .Sy Notice Severity

@@ -1,0 +1,30 @@
+--- sliplogin-2.1.0/sliplogin.c.ewt	Fri Jul 18 12:06:55 1997
++++ sliplogin-2.1.0/sliplogin.c	Fri Jul 18 12:08:14 1997
+@@ -83,6 +83,8 @@
+ 
+ #include "sliplogin.h"
+ 
++#include <unistd.h>
++
+ #ifdef linux
+ struct enet_statistics stats;
+ int get_rx_packets(char *ifname, struct enet_statistics *stats);
+--- sliplogin-2.1.0/Makefile.ewt	Fri Jul 18 12:08:36 1997
++++ sliplogin-2.1.0/Makefile	Fri Jul 18 12:09:03 1997
+@@ -33,7 +33,7 @@
+ 
+ CC	= gcc
+ LINK	= $(CC)
+-CFLAGS	= $(RPM_OPT_FLAGS) -pipe -fomit-frame-pointer #-Wall
++CFLAGS	= -D_GNU_SOURCE $(RPM_OPT_FLAGS) -pipe -fomit-frame-pointer #-Wall
+ EFLAGS	= -DESLIPLOGIN -DESLIP_AUTO -DSLIP_MODES
+ DEFINES	= -DSLIPPATH=\"$(SLIP)\" $(EFLAGS)
+ LDFLAGS = -s
+@@ -50,6 +50,7 @@
+ #LIBS = -lshadow	# for Linux with shadow passwd
+ #LIBS = -lutil		# for FreeBSD 1.x
+ #LIBS = -lkvm		# for FreeBSD 2.x
++LIBS=-lnsl
+ 
+ FILES	= README README.nis README.dynamic README.esliplogin \
+ 	  CHANGES TODO TROUBLE_SHOOTING passwd.example \

@@ -1,0 +1,101 @@
+diff -ur sliplogin-2.1.0.orig/Makefile sliplogin-2.1.0/Makefile
+--- sliplogin-2.1.0.orig/Makefile	Sun May 12 06:02:30 1996
++++ sliplogin-2.1.0/Makefile	Mon Aug 26 17:32:11 1996
+@@ -24,14 +24,14 @@
+ 
+ # path for configuration files and to install binaries / manpages
+ SLIP	= /etc/slip
+-SBIN	= /usr/local/sbin
+-MAN	= /usr/local/man
++SBIN	= /usr/sbin
++MAN	= /usr/share/man
+ 
+ VERSION	= 2.1.0
+ 
+ CC	= gcc
+ LINK	= $(CC)
+-CFLAGS	= -O2 -pipe -fomit-frame-pointer -m486 #-Wall
++CFLAGS	= $(RPM_OPT_FLAGS) -pipe -fomit-frame-pointer #-Wall
+ EFLAGS	= -DESLIPLOGIN -DESLIP_AUTO
+ DEFINES	= -DSLIPPATH=\"$(SLIP)\" $(EFLAGS)
+ LDFLAGS = -s
+@@ -61,7 +61,7 @@
+ #You should really edit /etc/group to limit access to sliplogin
+ #otherwise sliplogin has to be executable for the world.
+ #
+-SLIPGROUP = slip
++SLIPGROUP = root
+ 
+ TARGETS = access sliplogin
+ 
+@@ -84,10 +84,10 @@
+ #	move the old binary to another name
+ 
+ install_slip: sliplogin
+-	install -m4754 sliplogin $(SBIN)
++	install sliplogin $(SBIN)
+ 	@if [ -f sliplogin.8 ]; then \
+ 	   install -m644 sliplogin.8 $(MAN)/man8; fi
+-	chgrp $(SLIPGROUP) $(SBIN)/sliplogin
++	#chgrp $(SLIPGROUP) $(SBIN)/sliplogin
+ 	touch $(SLIP)/.hushlogin
+ 	@if [ ! -f $(SLIP)/slip.login ]; then \
+ 	  echo install -m755 slip.login $(SLIP); \
+diff -ur sliplogin-2.1.0.orig/slip.hosts sliplogin-2.1.0/slip.hosts
+--- sliplogin-2.1.0.orig/slip.hosts	Sat May 11 17:34:41 1996
++++ sliplogin-2.1.0/slip.hosts	Mon Aug 26 17:33:01 1996
+@@ -9,30 +9,30 @@
+ #          slip,cslip,Sjim,Sspock and Sbones need to be in /etc/passwd
+ #
+ # some anonymous login's (remote address should be DYNAMIC for > 1 line).
+-Snormal	130.149.1.1	130.149.1.100	255.255.255.0	normal		60
+-Scomp   130.149.1.1	130.149.1.101	255.255.255.0	compressed	60
+-Sauto   130.149.1.1	130.149.1.102	255.255.255.0	auto		60
++#Snormal	130.149.1.1	130.149.1.100	255.255.255.0	normal		60
++#Scomp   130.149.1.1	130.149.1.101	255.255.255.0	compressed	60
++#Sauto   130.149.1.1	130.149.1.102	255.255.255.0	auto		60
+ 
+ # our friends
+-Sjim	linuxbox        space		255.255.255.0	normal		-1
+-Sspock	linuxbox	DYNAMIC		255.255.255.0	compressed	-1
+-Sbones	linuxbox	lab		255.255.255.0	auto		-1
++#Sjim	linuxbox        space		255.255.255.0	normal		-1
++#Sspock	linuxbox	DYNAMIC		255.255.255.0	compressed	-1
++#Sbones	linuxbox	lab		255.255.255.0	auto		-1
+ 
+ # if you want to use this file on several hosts (and not NIS)
+-Sstatic	DYNAMIC		130.149.1.102	255.255.255.255	auto		-1
++#Sstatic	DYNAMIC		130.149.1.102	255.255.255.255	auto		-1
+ 
+ # host - entries for esliplogin (no /etc/passwd entry, see README.esliplogin)
+-static	*		130.149.1.103	255.255.255.255	normal		-1
+-dynamic	*		*		255.255.255.255	normal		-1
++#static	*		130.149.1.103	255.255.255.255	normal		-1
++#dynamic	*		*		255.255.255.255	normal		-1
+ 
+ # use of dynamic adresses just for one login or for all remaining users 
+ #  (usefull for esliplogin; each host must have it's own slip.tty!)
+-Sdyna	DYNAMIC		DYNAMIC		255.255.255.255	auto		-1
+-*	*		*		255.255.255.255	auto		-1
++#Sdyna	DYNAMIC		DYNAMIC		255.255.255.255	auto		-1
++#*	*		*		255.255.255.255	auto		-1
+ 
+ # using NIS map slip.hosts: using local IP-Address as given below
+ #  (WARNING: the specified local IP-Adr. will be overwritten by the
+ 	real Serveradress, if the NIS-map contains a DNAMIC local address
+ 	entry. See the scanning oder in scanfile.c for explanation.)
+-+130.149.1.1
++#+130.149.1.1
+ 
+diff -ur sliplogin-2.1.0.orig/slip.tty sliplogin-2.1.0/slip.tty
+--- sliplogin-2.1.0.orig/slip.tty	Sat Oct  8 14:20:16 1994
++++ sliplogin-2.1.0/slip.tty	Mon Aug 26 17:33:23 1996
+@@ -7,6 +7,6 @@
+ # IP's that are valid for your network!
+ # NOTE2: don't use these loopback adresses if you have a real IP address
+ 
+-/dev/ttyS16	127.0.0.254
+-/dev/ttyS17	127.0.0.253
++#/dev/ttyS16	127.0.0.254
++#/dev/ttyS17	127.0.0.253
+ 

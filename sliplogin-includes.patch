@@ -1,0 +1,11 @@
+--- sliplogin-2.1.1/sliplogin.c.fix	Thu Oct 23 17:32:16 1997
++++ sliplogin-2.1.1/sliplogin.c	Thu Oct 23 17:35:19 1997
+@@ -84,6 +84,8 @@
+ #include "sliplogin.h"
+ 
+ #include <unistd.h>
++#include <pwd.h>
++#include <sys/types.h>
+ 
+ #ifdef linux
+ struct enet_statistics stats;
