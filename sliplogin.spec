@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir /etc/slip
 %config %verify(not md5 mtime size) /etc/slip/*
 %attr(755, root, root) /usr/sbin/sliplogin
-%attr(644, root,  man) %{_mandir}/man8/*
+%{_mandir}/man8/*
 
 %changelog
 * Thu Aug 18 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
