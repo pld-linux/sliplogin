@@ -1,19 +1,19 @@
-Summary:     Login program for SLIP
-Summary(de): Login-Programm für SLIP
-Summary(fr): Programme de login pour SLIP
-Summary(pl): Program do logowania z u¿yciem SLIP
-Summary(tr): SLIP için sisteme giriþ programý
-Name:        sliplogin
-Version:     2.1.1
-Release:     4
-Group:       Utilities/System
-Copyright:   BSD
-Source:      ftp://sunsite.unc.edu/pub/Linux/system/network/serial/%{name}-%{version}.tar.gz
-Patch0:      sliplogin-2.1.0-misc.patch
-Patch1:      sliplogin-2.1.1-modes.patch
-Patch2:      sliplogin-2.1.0-path.patch
-Patch4:      sliplogin-2.1.0-glibc.patch
-Patch5:      sliplogin-2.1.1-includes.patch
+Summary:	Login program for SLIP
+Summary(de):	Login-Programm für SLIP
+Summary(fr):	Programme de login pour SLIP
+Summary(pl):	Program do logowania z u¿yciem SLIP
+Summary(tr):	SLIP için sisteme giriþ programý
+Name:		sliplogin
+Version:	2.1.1
+Release:	4
+Group:		Utilities/System
+Copyright:	BSD
+Source:		ftp://sunsite.unc.edu/pub/Linux/system/network/serial/%{name}-%{version}.tar.gz
+Patch0:		sliplogin-2.1.0-misc.patch
+Patch1:		sliplogin-2.1.1-modes.patch
+Patch2:		sliplogin-2.1.0-path.patch
+Patch4:		sliplogin-2.1.0-glibc.patch
+Patch5:		sliplogin-2.1.1-includes.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -40,10 +40,10 @@ izin verir.
 %prep
 %setup -q
 %patch0 -p1 
-%patch1 -p1 -b .modes
-%patch2 -p1 -b .path
-%patch4 -p1 -b .glibc
-%patch5 -p1 -b .includes
+%patch1 -p1
+%patch2 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 make clean
@@ -53,19 +53,22 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{etc/slip,usr/{sbin,man/man8}}
+install -d $RPM_BUILD_ROOT/{etc/slip,%{_sbindir},%{_mandir}/man8}
 make install \
 	SLIP=$RPM_BUILD_ROOT/etc/slip \
 	SBIN=$RPM_BUILD_ROOT%{_sbindir} \
 	MAN=$RPM_BUILD_ROOT%{_mandir}
 install slip.{tty,hosts,route,passwd} $RPM_BUILD_ROOT/etc/slip
 
+gzip -9nf README* TODO TROUBLE_SHOOTING \
+	$RPM_BUILD_ROOT%{_mandir}/man8/*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README* TODO TROUBLE_SHOOTING
+%doc README*.gz TODO.gz TROUBLE_SHOOTING.gz
 %dir /etc/slip
 %config %verify(not md5 mtime size) /etc/slip/*
 %attr(755,root,root) %{_sbindir}/sliplogin
