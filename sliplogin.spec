@@ -6,8 +6,9 @@ Summary(tr):	SLIP için sisteme giriþ programý
 Name:		sliplogin
 Version:	2.1.1
 Release:	4
+Copyright:      BSD
 Group:		Utilities/System
-Copyright:	BSD
+Group(pl):	Narzêdzia/System
 Source:		ftp://sunsite.unc.edu/pub/Linux/system/network/serial/%{name}-%{version}.tar.gz
 Patch0:		sliplogin-2.1.0-misc.patch
 Patch1:		sliplogin-2.1.1-modes.patch
@@ -29,8 +30,8 @@ Attache une interface SLIP à l'entrée standard. Ceci est souvent utilisé
 pour permettre des connexions SLIP en dialin.
 
 %description -l pl
-Paket zawiera program pod³±czaj±cy interfejsc SLIP do standardowego wej¶cia.
-Mo¿e byæ on wykorztystywany do udostêpniania po³±czenia opartego o SLIP na
+Paket zawiera program pod³±czaj±cy interfejs SLIP do standardowego wej¶cia.
+Mo¿e byæ on wykorzystywany do udostêpniania po³±czenia opartego o SLIP na
 liniach modemowych.
 
 %description -l tr
