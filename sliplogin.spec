@@ -62,15 +62,12 @@ SLIP=$RPM_BUILD_ROOT%{_sysconfdir}/slip \
 	MAN=$RPM_BUILD_ROOT%{_mandir}
 install slip.{tty,hosts,route,passwd} $RPM_BUILD_ROOT%{_sysconfdir}/slip
 
-gzip -9nf README* TODO TROUBLE_SHOOTING \
-	$RPM_BUILD_ROOT%{_mandir}/man8/*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README*,TODO,TROUBLE_SHOOTING}.gz
+%doc {README*,TODO,TROUBLE_SHOOTING}
 %dir %{_sysconfdir}/slip
 %config %verify(not md5 mtime size) %{_sysconfdir}/slip/*
 %attr(755,root,root) %{_sbindir}/sliplogin
