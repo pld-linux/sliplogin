@@ -52,7 +52,7 @@ izin verir.
 %{__make} clean
 rm -f sliplogin
 %{__make} access
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
