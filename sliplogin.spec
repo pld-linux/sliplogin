@@ -16,7 +16,7 @@ Patch2:		sliplogin-path.patch
 Patch4:		sliplogin-glibc.patch
 Patch5:		sliplogin-includes.patch
 Patch6:		sliplogin-netdev.patch
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Attaches a SLIP interface to standard input. This is often used to allow
