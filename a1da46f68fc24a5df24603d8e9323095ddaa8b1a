@@ -1,0 +1,29 @@
+
+- added using CVS keywords in %changelog (for automating them).
+
+
+* Thu Aug 18 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [2.1.1-3]
+- added -q %setup parameter,
+- added using %%{name} and %%{version} in Source,
+- spec rewrited for using Buildroot,
+- added %clean section,
+- some simplification in %install and %build,
+- added pl translation,
+- added "%dir /etc/slip" to %files,
+- added %verify rules to %config files,
+- added %attr and %defattr macros in %files (allows build package from
+  non-root account).
+
+* Mon Apr 27 1998 Prospector System <bugs@redhat.com>
+- translations modified for de, fr, tr
+
+* Thu Oct 23 1997 Michael K. Johnson <johnsonm@redhat.com>
+- upgraded to 2.1.1
+- struct password needs <pwd.h>
+
+* Thu Oct 09 1997 Erik Troan <ewt@redhat.com>
+- removed excludearch for alpha
+
+* Fri Jul 18 1997 Erik Troan <ewt@redhat.com>
+- built against glibc
