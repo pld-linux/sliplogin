@@ -14,7 +14,7 @@ Patch1:      sliplogin-2.1.1-modes.patch
 Patch2:      sliplogin-2.1.0-path.patch
 Patch4:      sliplogin-2.1.0-glibc.patch
 Patch5:      sliplogin-2.1.1-includes.patch
-Buildroot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Attaches a SLIP interface to standard input. This is often used to allow
