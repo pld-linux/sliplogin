@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 - added pl translation,
 - added "%dir /etc/slip" to %files,
 - added %verify rules to %config files,
-- added %attr and %defattr macros in %files (allow build package from
+- added %attr and %defattr macros in %files (allows build package from
   non-root account).
 
 * Mon Apr 27 1998 Prospector System <bugs@redhat.com>
