@@ -49,15 +49,15 @@ izin verir.
 %patch6 -p1
 
 %build
-make clean
+%{__make} clean
 rm -f sliplogin
-make access
+%{__make} access
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{etc/slip,%{_sbindir},%{_mandir}/man8}
-make install \
+%{__make} install \
 	SLIP=$RPM_BUILD_ROOT/etc/slip \
 	SBIN=$RPM_BUILD_ROOT%{_sbindir} \
 	MAN=$RPM_BUILD_ROOT%{_mandir}
