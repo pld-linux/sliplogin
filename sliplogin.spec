@@ -1,8 +1,8 @@
 Summary:	Login program for SLIP
-Summary(de):	Login-Programm für SLIP
-Summary(fr):	Programme de login pour SLIP
-Summary(pl):	Program do logowania z u¿yciem SLIP
-Summary(tr):	SLIP için sisteme giriþ programý
+Summary(de.UTF-8):   Login-Programm fÃ¼r SLIP
+Summary(fr.UTF-8):   Programme de login pour SLIP
+Summary(pl.UTF-8):   Program do logowania z uÅ¼yciem SLIP
+Summary(tr.UTF-8):   SLIP iÃ§in sisteme giriÅŸ programÄ±
 Name:		sliplogin
 Version:	2.1.1
 Release:	4
@@ -22,22 +22,22 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Attaches a SLIP interface to standard input. This is often used to
 allow dialin SLIP connections.
 
-%description -l de
-Fügt Standardeingabe ein SLIP-Interface hinzu, was häufig dazu dient,
-Einwähl-SLIP-Verbindungen herzustellen.
+%description -l de.UTF-8
+FÃ¼gt Standardeingabe ein SLIP-Interface hinzu, was hÃ¤ufig dazu dient,
+EinwÃ¤hl-SLIP-Verbindungen herzustellen.
 
-%description -l fr
-Attache une interface SLIP à l'entrée standard. Ceci est souvent
-utilisé pour permettre des connexions SLIP en dialin.
+%description -l fr.UTF-8
+Attache une interface SLIP Ã  l'entrÃ©e standard. Ceci est souvent
+utilisÃ© pour permettre des connexions SLIP en dialin.
 
-%description -l pl
-Pakiet zawiera program pod³±czaj±cy interfejs SLIP do standardowego
-wej¶cia. Mo¿e byæ on wykorzystywany do udostêpniania po³±czenia
+%description -l pl.UTF-8
+Pakiet zawiera program podÅ‚Ä…czajÄ…cy interfejs SLIP do standardowego
+wejÅ›cia. MoÅ¼e byÄ‡ on wykorzystywany do udostÄ™pniania poÅ‚Ä…czenia
 opartego o SLIP na liniach modemowych.
 
-%description -l tr
-Bir SLIP arayüzünü standart girdiye baðlar. Çevirmeli SLIP
-baðlantýlarýna izin verir.
+%description -l tr.UTF-8
+Bir SLIP arayÃ¼zÃ¼nÃ¼ standart girdiye baÄŸlar. Ã‡evirmeli SLIP
+baÄŸlantÄ±larÄ±na izin verir.
 
 %prep
 %setup -q
