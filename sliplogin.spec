@@ -1,8 +1,8 @@
 Summary:	Login program for SLIP
-Summary(de.UTF-8):   Login-Programm für SLIP
-Summary(fr.UTF-8):   Programme de login pour SLIP
-Summary(pl.UTF-8):   Program do logowania z użyciem SLIP
-Summary(tr.UTF-8):   SLIP için sisteme giriş programı
+Summary(de.UTF-8):	Login-Programm für SLIP
+Summary(fr.UTF-8):	Programme de login pour SLIP
+Summary(pl.UTF-8):	Program do logowania z użyciem SLIP
+Summary(tr.UTF-8):	SLIP için sisteme giriş programı
 Name:		sliplogin
 Version:	2.1.1
 Release:	4
